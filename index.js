@@ -1,23 +1,22 @@
-const calc = require("./calc") //import
-
-calc.addition(10,10)
-calc.substraction(10,1)
-calc.muitiplication(10,3)
+const express = require("express")
+const sessioncontroller = require("./controller/session-controller")
 
 
+const app = express()
+
+
+app.get("/login",sessioncontroller.login)
+app.get("/signup",sessioncontroller.signup)
+
+
+app.get("/",function(req,res){
+    res.write("welcome...")
+    res.end()
+})
 
 
 
 
-// console.log("hello")
-
-// a=10
-// console.log(a);
-// a="royal"
-// console.log(a);
-// function add(a,b) {
-//      c=a+b
-//      console.log("addition = ",c);
-// }
-
-// add(10,20)
+app.listen(3000,function(){
+    console.log("server started on 3000");
+})
